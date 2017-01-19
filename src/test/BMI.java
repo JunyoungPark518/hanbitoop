@@ -1,24 +1,16 @@
 package test;
 
 public class BMI {
-	private String name, result; // instance variable 반드시 initialize를 하지 않는다
-	private int age;
-	private double height, weight, bmi;
+	// instance variable 반드시 initialize를 하지 않는다.
+	private String uid; 
+	private double height, weight;
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public void setAge(int age) {
-		this.age = age;
-	}
-	
-	public int getAge() {
-		return age;
+	public String getUid() {
+		return uid;
 	}
 	
 	public void setHeight(double height) {
@@ -37,21 +29,11 @@ public class BMI {
 		return weight;
 	}
 	
-	public void setBmi(double bmi) {
-		this.bmi = bmi;
-	}
-	
-	public double getBmi() {
-		return bmi;
-	}
-	
-	public String getResult() {
-		return result;
-	}
-	
 	// setter를 생략하면, readOnly 파일
-	public void calcBmi() {
-		bmi = weight / (height * height);
+	// stand alone method
+	public String calcBmi(double height, double weight) {
+		double bmi = weight / (height * height);
+		String result = "";
 		if(bmi>30) {
 			result = "고도비만";
 		} else if(bmi>25) {
@@ -63,5 +45,6 @@ public class BMI {
 		} else {
 			result = "저체중";
 		}
+		return result;
 	}
 }
