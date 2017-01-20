@@ -1,6 +1,7 @@
 package bank;
 
 import java.util.Calendar;
+import util.RandomGen;
 
 public class Account {
 	public final static String BANK_NAME = "한빛뱅크";
@@ -9,24 +10,13 @@ public class Account {
 	// 6자리 random 숫자
 	
 	public Account(String uid, String accountType) {
-		this.accountNo = makeNumber();
-		this.createDate = today();
+		accountNo = RandomGen.getRandomNum(999999, 100000);
+		createDate = Calendar.getInstance().get(Calendar.YEAR) + "년 "
+				+ Calendar.getInstance().get(Calendar.MONTH) + 1 + "월 "
+				+ Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + "일";
 		this.uid = uid;
 		this.accountType = accountType;
 		money = 0;
-	}
-	
-	private int makeNumber() {
-		String no = "";
-		for(int i=0; i<6; i++) {
-			no += (int) (Math.random() * 10);
-		}
-		return Integer.parseInt(no);
-	}
-	
-	public String today() {
-		Calendar c = Calendar.getInstance();
-		return c.get(c.YEAR) + "년 " + c.get(c.MONTH) + 1 + "월 " + c.get(c.DAY_OF_MONTH) + "일";
 	}
 	
 	public String getUid() {
