@@ -1,8 +1,7 @@
 package hospital;
 
-public class Nurses {
-	private String majorJob, nurName, nurGen, nurPhone, nurEmail, nurPosition;
-	private int nurId;
+public class Nurses extends Member {
+	private String majorJob, position;
 	
 	public String getMajorJob() {
 		return majorJob;
@@ -12,51 +11,25 @@ public class Nurses {
 		this.majorJob = majorJob;
 	}
 	
-	public String getNurName() {
-		return nurName;
+	public String getPosition() {
+		return position;
 	}
 	
-	public void setNurName(String nurName) {
-		this.nurName = nurName;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
-	public String getNurGen() {
-		return nurGen;
+	@Override
+	public String toString() {
+		return String.format(
+				"간호사ID: %s\n"
+				+ "담당진료과목: %s\n"
+				+ "성명: %s\n"
+				+ "성별: %s\n"
+				+ "전화번호: %s\n"
+				+ "이메일: %s\n"
+				+ "직급: %s\n", 
+				super.uid, majorJob, super.name, super.gen, super.phone, super.email, position);
 	}
 	
-	public void setNurGen(String nurGen) {
-		this.nurGen = nurGen;
-	}
-	
-	public String getNurPhone() {
-		return nurPhone;
-	}
-	
-	public void setNurPhone(String nurPhone) {
-		this.nurPhone = nurPhone;
-	}
-	
-	public String getNurEmail() {
-		return nurEmail;
-	}
-	
-	public void setNurEmail(String nurEmail) {
-		this.nurEmail = nurEmail;
-	}
-	
-	public String getNurPosition() {
-		return nurPosition;
-	}
-	
-	public void setNurPosition(String nurPosition) {
-		this.nurPosition = nurPosition;
-	}
-	
-	public int getNurId() {
-		return nurId;
-	}
-	
-	public void setNurId(int nurId) {
-		this.nurId = nurId;
-	}
 }

@@ -2,11 +2,12 @@ package test;
 
 import javax.swing.JOptionPane;
 
+import hospital.BMI;
+
 public class Controller {
 	public void start() {
-		String ssn = "", gender = "", id = "";
+		String ssn = "", gender = "";
 		Member member = null; // class object의 초기값은 null
-		BMI bmi = null;
 		while(true) {
 			switch(inputInt("1. 회원등록 / 2. BMI측정 / 3. 로또 / 4. 성적표 / 0. 종료")) {
 			case 0:
@@ -32,21 +33,7 @@ public class Controller {
 				gender = member.calcGender(ssn);
 				show(String.format("%s은 %s입니다.\n회원등록 되었습니다.", member.getName(), gender));
 				break;
-			case 2:
-				bmi = new BMI();
-				while(true) {
-					id = input("아이디?");
-					if(id.equals(member.getUid())) {
-						bmi.setUid(id);
-						bmi.setHeight(inputDouble("몸무게?") / 100);
-						bmi.setWeight(inputDouble("키?"));
-						show(String.format("%s은 '%s'입니다.\n", member.getName(), bmi.calcBmi(bmi.getHeight(), bmi.getWeight())));
-						break;
-					} else {
-						show("아이디를 잘못 입력하셨습니다.");
-					}
-				}
-				break;
+			
 			case 3:
 				Lotto l = new Lotto();
 				l.draw();

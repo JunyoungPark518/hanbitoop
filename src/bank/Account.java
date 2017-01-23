@@ -3,11 +3,16 @@ package bank;
 import java.util.Calendar;
 import util.RandomGen;
 
-public class Account {
+public abstract class Account {
 	public final static String BANK_NAME = "한빛뱅크";
-	private String uid, accountType, createDate;
-	private int money, accountNo;
+	public final static String ACCOUNT_TYPE = "통장 BASE";
+	protected String uid, accountType, createDate;
+	protected int money, accountNo;
 	// 6자리 random 숫자
+	
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Account(String uid, String accountType) {
 		accountNo = RandomGen.getRandomNum(999999, 100000);
@@ -42,4 +47,7 @@ public class Account {
 	public int getAccountNo() {
 		return accountNo;
 	}
+	
+	public abstract void deposit(int money);
+	public abstract void withdraw(int money);
 }

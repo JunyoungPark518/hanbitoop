@@ -1,16 +1,7 @@
 package hospital;
 
-public class Doctors {
-	private int docId;
-	private String majorTreat, docName, docGen, docPhone, docEmail, docPosition;
-	
-	public int getDocId() {
-		return docId;
-	}
-	
-	public void setDocId(int docId) {
-		this.docId = docId;
-	}
+public class Doctors extends Member {
+	private String majorTreat, position;
 	
 	public String getMajorTreat() {
 		return majorTreat;
@@ -20,43 +11,24 @@ public class Doctors {
 		this.majorTreat = majorTreat;
 	}
 	
-	public String getDocName() {
-		return docName;
+	public String getPosition() {
+		return position;
 	}
 	
-	public void setDocName(String docName) {
-		this.docName = docName;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
-	public String getDocGen() {
-		return docGen;
-	}
-	
-	public void setDocGen(String docGen) {
-		this.docGen = docGen;
-	}
-	
-	public String getDocPhone() {
-		return docPhone;
-	}
-	
-	public void setDocPhone(String docPhone) {
-		this.docPhone = docPhone;
-	}
-	
-	public String getDocEmail() {
-		return docEmail;
-	}
-	
-	public void setDocEmail(String docEmail) {
-		this.docEmail = docEmail;
-	}
-	
-	public String getDocPosition() {
-		return docPosition;
-	}
-	
-	public void setDocPosition(String docPosition) {
-		this.docPosition = docPosition;
+	@Override
+	public String toString() {
+		return String.format(
+				"의사ID: %s\n"
+				+ "담당진료과목: %s\n"
+				+ "성명: %s\n"
+				+ "성별: %s\n"
+				+ "전화번호: %s\n"
+				+ "이메일: %s\n"
+				+ "직급: %s\n", 
+				super.uid, majorTreat, super.name, super.gen, super.phone, super.email, position);
 	}
 }

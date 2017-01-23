@@ -1,71 +1,15 @@
 package hospital;
 
-public class Patients {
-	private String patName, patGen, patJumin, patAddr, patPhone, patEmail, patJob;
-	private int patId, nurId, docId;
+public class Patients extends Member {
+	private String job;
+	private int nurId, docId;
 	
-	public String getPatName() {
-		return patName;
+	public String getJob() {
+		return job;
 	}
 	
-	public void setPatName(String patName) {
-		this.patName = patName;
-	}
-	
-	public String getPatGen() {
-		return patGen;
-	}
-	
-	public void setPatGen(String patGen) {
-		this.patGen = patGen;
-	}
-	
-	public String getPatJumin() {
-		return patJumin;
-	}
-	
-	public void setPatJumin(String patJumin) {
-		this.patJumin = patJumin;
-	}
-	
-	public String getPatAddr() {
-		return patAddr;
-	}
-	
-	public void setPatAddr(String patAddr) {
-		this.patAddr = patAddr;
-	}
-	
-	public String getPatPhone() {
-		return patPhone;
-	}
-	
-	public void setPatPhone(String patPhone) {
-		this.patPhone = patPhone;
-	}
-	
-	public String getPatEmail() {
-		return patEmail;
-	}
-	
-	public void setPatEmail(String patEmail) {
-		this.patEmail = patEmail;
-	}
-	
-	public String getPatJob() {
-		return patJob;
-	}
-	
-	public void setPatJob(String patJob) {
-		this.patJob = patJob;
-	}
-	
-	public int getPatId() {
-		return patId;
-	}
-	
-	public void setPatId(int patId) {
-		this.patId = patId;
+	public void setJob(String job) {
+		this.job = job;
 	}
 	
 	public int getNurId() {
@@ -82,5 +26,21 @@ public class Patients {
 	
 	public void setDocId(int docId) {
 		this.docId = docId;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format(
+				"환자ID: %s\n"
+				+ "간호사ID: %s\n"
+				+ "의사ID: %s\n"
+				+ "환자성명: %s\n"
+				+ "환자성별: %s\n"
+				+ "주민번호(800101-1): %s\n"
+				+ "주소: %s\n"
+				+ "전화번호: %s\n"
+				+ "이메일: %s\n"
+				+ "직업: %s\n", 
+				super.uid, nurId, docId, super.name, super.gen, super.ssn, super.addr, super.phone, super.email, job);
 	}
 }
