@@ -42,7 +42,7 @@ public class Controller {
 				n.setUid(Integer.parseInt(nurInfoArr[0]));
 				n.setMajorJob(nurInfoArr[1]);
 				n.setName(nurInfoArr[2]);
-				n.setGen(getGender(nurInfoArr[3]));
+				n.setGen(evalGender(nurInfoArr[3]));
 				n.setPhone(nurInfoArr[4]);
 				n.setEmail(nurInfoArr[5]);
 				n.setPosition(nurInfoArr[6]);
@@ -53,10 +53,11 @@ public class Controller {
 				String[] patInfoArr = patInfo.split(",");
 				p = new Patients();
 				p.setUid(Integer.parseInt(patInfoArr[0]));
+				// 의사 및 간호사를 입력하지 않았다면 NullPointerException이 출력. 
 				p.setNurId(n.getUid());
 				p.setDocId(d.getUid());
 				p.setName(patInfoArr[1]);
-				p.setGen(getGender(patInfoArr[2]));
+				p.setGen(evalGender(patInfoArr[2]));
 				p.setSsn(patInfoArr[2]);
 				p.setAddr(patInfoArr[3]);
 				p.setPhone(patInfoArr[4]);
@@ -89,7 +90,7 @@ public class Controller {
 		}
 	}
 	
-	public String getGender(String ssn) {
+	public String evalGender(String ssn) {
 		String gender;
 		char ch = ssn.charAt(7);
 		if(ch=='1'||ch=='3') {
