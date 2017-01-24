@@ -16,7 +16,7 @@ public class Controller {
 			+ "4.CHECK BMI\n"
 			+ "0.종료";
 	public void start() {
-		Treatment bmi = null;
+		BMI bmi = null;
 		Doctors d = null;
 		Nurses n = null;
 		Patients p = null;
@@ -66,14 +66,14 @@ public class Controller {
 				show(p.toString());
 				break;
 			case 4:
-				bmi = new Treatment();
+				bmi = new BMI();
 				int id = 0;
 				while(true) {
 					id = inputInt("환자 아이디 입력");
 					if(id == p.getUid()) {
 						bmi.setHeight(inputDouble("몸무게?") / 100);
 						bmi.setWeight(inputDouble("키?"));
-						show(String.format("%s은 '%s'입니다.\n", p.getName(), bmi.calcBmi(bmi.getHeight(), bmi.getWeight())));
+						show(String.format("%s은 '%s'입니다.\n", p.getName(), bmi.treat()));
 						break;
 					} else {
 						show("아이디를 잘못 입력하셨습니다.");

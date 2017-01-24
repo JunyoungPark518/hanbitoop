@@ -17,18 +17,22 @@ public class WageAccount extends Account{
 	}
 	
 	@Override
-	public void deposit(int money) {
-		// TODO Auto-generated method stub
-		super.money += money;
+	public String deposit(int money) {
+		if(money<0) {
+			return "0원 이상의 금액을 입금해주세요.";
+		} else {
+			super.money += money;
+			return money + "원이 입금되었습니다.";
+		}
 	}
 
 	@Override
-	public void withdraw(int money) {
-		// TODO Auto-generated method stub
-		if(super.money - money >= 0) {
+	public String withdraw(int money) {
+		if(super.money >= money) {
 			super.money -= money;
+			return "출금이 완료되었습니다.";
 		} else {
-			super.money = money;
+			return "잔액이 부족합니다.";
 		}
 	}
 }

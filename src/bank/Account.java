@@ -48,6 +48,6 @@ public abstract class Account {
 		return accountNo;
 	}
 	
-	public abstract void deposit(int money);
-	public abstract void withdraw(int money);
+	public abstract String deposit(int money);
+	public abstract String withdraw(int money);
 }

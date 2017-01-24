@@ -56,9 +56,7 @@ public class Controller {
 				break;
 			case 3: // 입금
 				if(input("아이디를 입력하세요.").equals(member.getUid()) && account != null) {
-					account.deposit(inputInt("얼마를 입금하시겠습니까?"));
-					show(String.format("입금이 완료되었습니다.\n"
-							+ "현재 잔액은 %d원입니다.", account.getMoney()));
+					show(account.deposit(inputInt("얼마를 입금하시겠습니까?")));
 				} else {
 					notCase(account);
 				}
@@ -66,13 +64,7 @@ public class Controller {
 			case 4: // 출금
 				if(input("아이디를 입력하세요.").equals(member.getUid()) && account != null) {
 					int withdraw = inputInt("얼마를 출금하시겠습니까?");
-					if(account.getMoney() - withdraw >= 0) {
-						account.withdraw(withdraw);
-						show(String.format("출금이 완료되었습니다.\n"
-								+ "현재 잔액은 %d원입니다.", account.getMoney()));
-					} else {
-						show("잔액이 부족하여 출금할 수 없습니다.");
-					}
+					show(account.withdraw(withdraw));
 				} else {
 					notCase(account);
 				}
