@@ -15,18 +15,10 @@ public class CustomerServiceImpl implements CustomerService {
 		String pname = p.getName();
 		String result = "잔액이 부족함\n남은 잔액:" + customer.getMoney();
 		if(customer.getMoney() >= p.getPrice()) {
-			if(pname.equals("청소기")) {
-				customer.setMoney(customer.getMoney()-p.getPrice());
-			} else if(pname.equals("컴퓨터")) {
-				customer.setMoney(customer.getMoney()-p.getPrice());
-			} else if(pname.equals("스마트폰")) {
-				customer.setMoney(customer.getMoney()-p.getPrice());
-			} else {
-				customer.setMoney(customer.getMoney()-p.getPrice());
-			}
+			customer.setMoney(customer.getMoney()-p.getPrice());
 			result = pname + "이(가) 카트에 추가됨";
+			add(p);
 		} 
-		add(p);
 		return result;
 	}
 
