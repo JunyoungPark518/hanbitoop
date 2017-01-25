@@ -2,7 +2,6 @@ package shopping;
 
 public class CustomerServiceImpl implements CustomerService {
 	Customer customer;
-	Product[] cart;
 	int index;
 	public CustomerServiceImpl() {
 		customer = new Customer();
@@ -15,7 +14,6 @@ public class CustomerServiceImpl implements CustomerService {
 		// 만약 가진 돈이 작으면 잔액이 부족합니다 라고 한다
 		String pname = p.getName();
 		String result = "잔액이 부족함\n남은 잔액:" + customer.getMoney();
-		cart = customer.getCart();
 		if(customer.getMoney() >= p.getPrice()) {
 			if(pname.equals("청소기")) {
 				customer.setMoney(customer.getMoney()-p.getPrice());
@@ -35,8 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void add(Product p) {
 		// 카트에 추가시키는 로직
-		cart = customer.getCart();
-		cart[index] = p;
+		customer.getCart()[index] = p;
 		index++;
 	}
 
@@ -47,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// 지금 상황에선 3개만 구입한 내용이 나온다
 		String bill = "";
 		for(int i=0; i<index; i++) {
-			bill += cart[i].toString() + "\n";
+			bill += customer.getCart()[i].toString() + "\n";
 		}
 		return bill;
 	}
