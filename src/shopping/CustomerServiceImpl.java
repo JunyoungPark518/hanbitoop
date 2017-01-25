@@ -13,26 +13,22 @@ public class CustomerServiceImpl implements CustomerService {
 	public String buy(Product p) {
 		// 물건 구매시 현재 금액과 차이를 보고 구매 가능한지를 따진다.
 		// 만약 가진 돈이 작으면 잔액이 부족합니다 라고 한다
-		int money = customer.getMoney();
 		String pname = p.getName();
-		String result = "잔액이 부족함";
+		String result = "잔액이 부족함\n남은 잔액:" + customer.getMoney();
 		cart = customer.getCart();
-		if(money >= p.getPrice()) {
+		if(customer.getMoney() >= p.getPrice()) {
 			if(pname.equals("청소기")) {
-				p = new Cleaner();
 				customer.setMoney(customer.getMoney()-p.getPrice());
 			} else if(pname.equals("컴퓨터")) {
-				p = new Computer();
 				customer.setMoney(customer.getMoney()-p.getPrice());
 			} else if(pname.equals("스마트폰")) {
-				p = new Smartphone();
 				customer.setMoney(customer.getMoney()-p.getPrice());
 			} else {
-				p = new TV();
 				customer.setMoney(customer.getMoney()-p.getPrice());
 			}
 			result = pname + "이(가) 카트에 추가됨";
 		} 
+		add(p);
 		return result;
 	}
 
