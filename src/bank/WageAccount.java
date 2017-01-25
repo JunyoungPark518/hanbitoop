@@ -18,21 +18,26 @@ public class WageAccount extends Account{
 	
 	@Override
 	public String deposit(int money) {
-		if(money<0) {
-			return "0원 이상의 금액을 입금해주세요.";
-		} else {
+		if(checkMoney(money)) {
 			super.money += money;
-			return money + "원이 입금되었습니다.";
+			return money + Account.DEPOSIT_SUCCESS;
+		} else {
+			return Account.DEPOSIT_FAIL;
 		}
 	}
 
 	@Override
 	public String withdraw(int money) {
-		if(super.money >= money) {
+		if(checkMoney(super.money-money)) {
 			super.money -= money;
-			return "출금이 완료되었습니다.";
+			return Account.WITHDRAW_SUCCESS;
 		} else {
-			return "잔액이 부족합니다.";
+			return Account.WITHDRAW_FAIL;
 		}
+	}
+
+	@Override
+	public boolean checkMoney(int money) {
+		return money>=0;
 	}
 }
